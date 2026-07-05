@@ -19,7 +19,7 @@ const FeedPage = () => {
   useEffect(()=>{
 
 
-    axios.get('http://localhost:3000/create-post')
+    axios.get("https://insta-feed-upload-images-3.onrender.com/create-post")
     .then((res)=>{
         setPosts(res.data.posts)
     })

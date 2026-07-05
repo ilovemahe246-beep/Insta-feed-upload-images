@@ -11,7 +11,7 @@ const CreatePost = () => {
     const formData = new FormData(e.target);
 
     axios
-      .post("http://localhost:3000/create-post", formData)
+      .post("https://insta-feed-upload-images-3.onrender.com/create-post", formData)
       .then((res) => {
         navigate("/feed"); // ✅ FIX HERE
       })
