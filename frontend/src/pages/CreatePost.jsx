@@ -2,19 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
-
-const Feed = () => {
-  const navigate = useNavigate();
-
-  return (
-    <button onClick={() => navigate("/create-post")}>
-      Create Post
-    </button>
-  );
-};
 const CreatePost = () => {
-  const navigate = useNavigate(); // ✅ FIX HERE
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +12,8 @@ const CreatePost = () => {
 
     axios
       .post("https://insta-feed-upload-images-3.onrender.com/create-post", formData)
-      .then((res) => {
-        navigate("/feed"); // ✅ FIX HERE
+      .then(() => {
+        navigate("/feed");
       })
       .catch((err) => {
         console.log(err);
@@ -33,11 +22,16 @@ const CreatePost = () => {
 
   return (
     <section className="create-post-section">
-      <h1>Create post</h1>
+      <h1>Create Post</h1>
 
       <form onSubmit={handleSubmit}>
-        <input type="file" name="image" accept="image/*" />
-        <input type="text" name="caption" placeholder="Enter caption" required />
+        <input type="file" name="image" accept="image/*" required />
+        <input
+          type="text"
+          name="caption"
+          placeholder="Enter caption"
+          required
+        />
         <button type="submit">Submit</button>
       </form>
     </section>

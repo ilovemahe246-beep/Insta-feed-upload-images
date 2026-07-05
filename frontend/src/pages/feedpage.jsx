@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-import axios from "axios"
 const FeedPage = () => {
   const [posts, setPosts] = useState([
     {
@@ -16,20 +17,25 @@ const FeedPage = () => {
       caption: "soft vibes 🌸",
     },
   ]);
-  useEffect(()=>{
 
-
-    axios.get("https://insta-feed-upload-images-3.onrender.com/create-post")
-    .then((res)=>{
-        setPosts(res.data.posts)
-    })
-  },[])
-
-
+  useEffect(() => {
+    axios
+      .get("https://insta-feed-upload-images-3.onrender.com/create-post")
+      .then((res) => {
+        setPosts(res.data.posts);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="feed-container">
       <h2 className="feed-title">✨ My Cute Feed</h2>
+
+      <Link to="/create-post">
+        <button>Create Post</button>
+      </Link>
 
       <div className="feed-grid">
         {posts.map((post) => (
