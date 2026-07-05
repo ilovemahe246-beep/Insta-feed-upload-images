@@ -1,0 +1,46 @@
+import React, { useEffect, useState } from "react";
+
+import axios from "axios"
+const FeedPage = () => {
+  const [posts, setPosts] = useState([
+    {
+      _id: "1",
+      image:
+        "https://ik.imagekit.io/jt6m8s71q/image-1783185004203_DEmCpzpAZU.jpg",
+      caption: "hello cutie 💖",
+    },
+    {
+      _id: "2",
+      image:
+        "https://ik.imagekit.io/jt6m8s71q/image-1783182794116_hpiCTXc6M.jpg",
+      caption: "soft vibes 🌸",
+    },
+  ]);
+  useEffect(()=>{
+
+
+    axios.get('http://localhost:3000/create-post')
+    .then((res)=>{
+        setPosts(res.data.posts)
+    })
+  },[])
+
+
+
+  return (
+    <div className="feed-container">
+      <h2 className="feed-title">✨ My Cute Feed</h2>
+
+      <div className="feed-grid">
+        {posts.map((post) => (
+          <div className="post-card" key={post._id}>
+            <img src={post.image} alt="post" />
+            <p>{post.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FeedPage;
