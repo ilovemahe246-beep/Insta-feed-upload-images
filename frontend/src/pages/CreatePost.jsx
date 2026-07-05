@@ -2,6 +2,17 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+
+const Feed = () => {
+  const navigate = useNavigate();
+
+  return (
+    <button onClick={() => navigate("/create-post")}>
+      Create Post
+    </button>
+  );
+};
 const CreatePost = () => {
   const navigate = useNavigate(); // ✅ FIX HERE
 
