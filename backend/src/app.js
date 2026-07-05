@@ -11,6 +11,12 @@ const upload = multer({
     storage: multer.memoryStorage()
 });
 
+app.get("/", (req, res) => {
+    res.json({
+        success: true,
+        message: "Backend is running "
+    });
+});
 app.post("/create-post", upload.single("image"), async (req, res) => {   
        
         const result = await uploadFile(req.file.buffer);
